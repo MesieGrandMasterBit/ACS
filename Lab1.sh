@@ -31,25 +31,25 @@ case "$v" in
 -a) echo "	Высотин Кирилл Евгеньевич
 		Пахомов Илья Максимович
 		Юрьев Юрий Вадимович"
-;;
+
 -ar) echo " -h -I -U -In -K -L -M -e "
-;;
+
 -readme) echo "Функционал программы включает в себя:
 а)Вывод сетевых интерфейсов
 б)Отключение/включение интерфейса
 в)Установка IP/Mask/Gateway для определённого интерфейса
 д)Отображение сетевой статиститки"
-;;
+
 -example) echo "Всем ку, уважаемые дамы и господа"
-;;
+
 -*) echo "Неизвестное действие"
 exit 1
-;;
+
 esac
 fi
-;;
+
 -I) ip link show
-;;
+
 -U) ip link show
 echo "Отключить -d, включить -u"
 read v
@@ -60,18 +60,18 @@ case "$v" in
 read int
 sudo ifconfig $int up
 ip link show
-;;
+
 -d) echo "Введите интерфейс, который хотите отключить:"
 read int
 sudo ifconfig $int down
 ip link show
-;;
+
 -*) echo "Неизвестное действие"
-;;
+
 esac
 else exit 1
 fi
-;;
+
 
 -In)
 #ifconfig eth0 192.168.33.42 netmask 255.255.0.
@@ -91,12 +91,12 @@ case "$v" in
 read int
 sudo ifconfig $link netmask $int
 ifconfig
-;;
+
 -Ip) echo "Введите новый ip"
 read int
 sudo ifconfig $link $int
 ifconfig
-;;
+
 -G) echo "Введите ip адрес шлюза, который нужно заменить:"
 read int
 sudo ip route del default via $int dev $link
@@ -105,19 +105,18 @@ echo "Введите новый ip адрес шлюза:"
 read int
 sudo ip route add default via $int dev $link
 ifconfig
-;;
+
 -*) echo "Неизвестное действие"
-;;
 esac
 else exit 1
 fi
-;;
+
 -L) #Отображение сетевой статистики https://itproffi.ru/otslezhivanie-sostoyaniya-seti-v-..
 #https://itproffi.ru/otslezhivanie-sostoyaniya-seti-v-..
 netstat #netstat -a | more ||-atu
-;;
+
 -e) return 0
-;;
+
 
 esac
 done
